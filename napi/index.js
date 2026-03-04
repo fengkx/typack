@@ -77,15 +77,15 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-android-arm64");
-        const bindingPackageVersion = require("typack-android-arm64/package.json").version;
+        const binding = require("@typack/typack-android-arm64");
+        const bindingPackageVersion = require("@typack/typack-android-arm64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -99,15 +99,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-android-arm-eabi");
-        const bindingPackageVersion = require("typack-android-arm-eabi/package.json").version;
+        const binding = require("@typack/typack-android-arm-eabi");
+        const bindingPackageVersion =
+          require("@typack/typack-android-arm-eabi/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -129,15 +130,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-win32-x64-gnu");
-          const bindingPackageVersion = require("typack-win32-x64-gnu/package.json").version;
+          const binding = require("@typack/typack-win32-x64-gnu");
+          const bindingPackageVersion =
+            require("@typack/typack-win32-x64-gnu/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -151,15 +153,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-win32-x64-msvc");
-          const bindingPackageVersion = require("typack-win32-x64-msvc/package.json").version;
+          const binding = require("@typack/typack-win32-x64-msvc");
+          const bindingPackageVersion =
+            require("@typack/typack-win32-x64-msvc/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -174,15 +177,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-win32-ia32-msvc");
-        const bindingPackageVersion = require("typack-win32-ia32-msvc/package.json").version;
+        const binding = require("@typack/typack-win32-ia32-msvc");
+        const bindingPackageVersion =
+          require("@typack/typack-win32-ia32-msvc/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -196,15 +200,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-win32-arm64-msvc");
-        const bindingPackageVersion = require("typack-win32-arm64-msvc/package.json").version;
+        const binding = require("@typack/typack-win32-arm64-msvc");
+        const bindingPackageVersion =
+          require("@typack/typack-win32-arm64-msvc/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -221,15 +226,15 @@ function requireNative() {
       loadErrors.push(e);
     }
     try {
-      const binding = require("typack-darwin-universal");
-      const bindingPackageVersion = require("typack-darwin-universal/package.json").version;
+      const binding = require("@typack/typack-darwin-universal");
+      const bindingPackageVersion = require("@typack/typack-darwin-universal/package.json").version;
       if (
-        bindingPackageVersion !== "0.1.0" &&
+        bindingPackageVersion !== "0.1.2" &&
         process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
         process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
       ) {
         throw new Error(
-          `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+          `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
         );
       }
       return binding;
@@ -243,15 +248,15 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-darwin-x64");
-        const bindingPackageVersion = require("typack-darwin-x64/package.json").version;
+        const binding = require("@typack/typack-darwin-x64");
+        const bindingPackageVersion = require("@typack/typack-darwin-x64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -265,15 +270,15 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-darwin-arm64");
-        const bindingPackageVersion = require("typack-darwin-arm64/package.json").version;
+        const binding = require("@typack/typack-darwin-arm64");
+        const bindingPackageVersion = require("@typack/typack-darwin-arm64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -291,15 +296,15 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-freebsd-x64");
-        const bindingPackageVersion = require("typack-freebsd-x64/package.json").version;
+        const binding = require("@typack/typack-freebsd-x64");
+        const bindingPackageVersion = require("@typack/typack-freebsd-x64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -313,15 +318,15 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-freebsd-arm64");
-        const bindingPackageVersion = require("typack-freebsd-arm64/package.json").version;
+        const binding = require("@typack/typack-freebsd-arm64");
+        const bindingPackageVersion = require("@typack/typack-freebsd-arm64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -340,15 +345,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-x64-musl");
-          const bindingPackageVersion = require("typack-linux-x64-musl/package.json").version;
+          const binding = require("@typack/typack-linux-x64-musl");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-x64-musl/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -362,15 +368,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-x64-gnu");
-          const bindingPackageVersion = require("typack-linux-x64-gnu/package.json").version;
+          const binding = require("@typack/typack-linux-x64-gnu");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-x64-gnu/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -386,15 +393,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-arm64-musl");
-          const bindingPackageVersion = require("typack-linux-arm64-musl/package.json").version;
+          const binding = require("@typack/typack-linux-arm64-musl");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-arm64-musl/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -408,15 +416,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-arm64-gnu");
-          const bindingPackageVersion = require("typack-linux-arm64-gnu/package.json").version;
+          const binding = require("@typack/typack-linux-arm64-gnu");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-arm64-gnu/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -432,15 +441,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-arm-musleabihf");
-          const bindingPackageVersion = require("typack-linux-arm-musleabihf/package.json").version;
+          const binding = require("@typack/typack-linux-arm-musleabihf");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-arm-musleabihf/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -454,15 +464,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-arm-gnueabihf");
-          const bindingPackageVersion = require("typack-linux-arm-gnueabihf/package.json").version;
+          const binding = require("@typack/typack-linux-arm-gnueabihf");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-arm-gnueabihf/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -478,15 +489,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-loong64-musl");
-          const bindingPackageVersion = require("typack-linux-loong64-musl/package.json").version;
+          const binding = require("@typack/typack-linux-loong64-musl");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-loong64-musl/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -500,15 +512,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-loong64-gnu");
-          const bindingPackageVersion = require("typack-linux-loong64-gnu/package.json").version;
+          const binding = require("@typack/typack-linux-loong64-gnu");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-loong64-gnu/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -524,15 +537,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-riscv64-musl");
-          const bindingPackageVersion = require("typack-linux-riscv64-musl/package.json").version;
+          const binding = require("@typack/typack-linux-riscv64-musl");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-riscv64-musl/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -546,15 +560,16 @@ function requireNative() {
           loadErrors.push(e);
         }
         try {
-          const binding = require("typack-linux-riscv64-gnu");
-          const bindingPackageVersion = require("typack-linux-riscv64-gnu/package.json").version;
+          const binding = require("@typack/typack-linux-riscv64-gnu");
+          const bindingPackageVersion =
+            require("@typack/typack-linux-riscv64-gnu/package.json").version;
           if (
-            bindingPackageVersion !== "0.1.0" &&
+            bindingPackageVersion !== "0.1.2" &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
             process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
           ) {
             throw new Error(
-              `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+              `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
             );
           }
           return binding;
@@ -569,15 +584,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-linux-ppc64-gnu");
-        const bindingPackageVersion = require("typack-linux-ppc64-gnu/package.json").version;
+        const binding = require("@typack/typack-linux-ppc64-gnu");
+        const bindingPackageVersion =
+          require("@typack/typack-linux-ppc64-gnu/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -591,15 +607,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-linux-s390x-gnu");
-        const bindingPackageVersion = require("typack-linux-s390x-gnu/package.json").version;
+        const binding = require("@typack/typack-linux-s390x-gnu");
+        const bindingPackageVersion =
+          require("@typack/typack-linux-s390x-gnu/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -617,15 +634,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-openharmony-arm64");
-        const bindingPackageVersion = require("typack-openharmony-arm64/package.json").version;
+        const binding = require("@typack/typack-openharmony-arm64");
+        const bindingPackageVersion =
+          require("@typack/typack-openharmony-arm64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -639,15 +657,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-openharmony-x64");
-        const bindingPackageVersion = require("typack-openharmony-x64/package.json").version;
+        const binding = require("@typack/typack-openharmony-x64");
+        const bindingPackageVersion =
+          require("@typack/typack-openharmony-x64/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -661,15 +680,16 @@ function requireNative() {
         loadErrors.push(e);
       }
       try {
-        const binding = require("typack-openharmony-arm");
-        const bindingPackageVersion = require("typack-openharmony-arm/package.json").version;
+        const binding = require("@typack/typack-openharmony-arm");
+        const bindingPackageVersion =
+          require("@typack/typack-openharmony-arm/package.json").version;
         if (
-          bindingPackageVersion !== "0.1.0" &&
+          bindingPackageVersion !== "0.1.2" &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK &&
           process.env.NAPI_RS_ENFORCE_VERSION_CHECK !== "0"
         ) {
           throw new Error(
-            `Native binding package version mismatch, expected 0.1.0 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
+            `Native binding package version mismatch, expected 0.1.2 but got ${bindingPackageVersion}. You can reinstall dependencies to fix this issue.`,
           );
         }
         return binding;
@@ -701,7 +721,7 @@ if (!nativeBinding || process.env.NAPI_RS_FORCE_WASI) {
   }
   if (!nativeBinding || process.env.NAPI_RS_FORCE_WASI) {
     try {
-      wasiBinding = require("typack-wasm32-wasi");
+      wasiBinding = require("@typack/typack-wasm32-wasi");
       nativeBinding = wasiBinding;
     } catch (err) {
       if (process.env.NAPI_RS_FORCE_WASI) {
@@ -740,3 +760,4 @@ if (!nativeBinding) {
 
 module.exports = nativeBinding;
 module.exports.bundle = nativeBinding.bundle;
+module.exports.cli = nativeBinding.cli;

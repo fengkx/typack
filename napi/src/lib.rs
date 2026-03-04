@@ -75,3 +75,12 @@ fn bundle_impl(options: BundleDtsOptions) -> Result<BundleDtsResult> {
 pub fn bundle(options: BundleDtsOptions) -> Result<BundleDtsResult> {
     bundle_impl(options)
 }
+
+/// Run the CLI with the given argv (pass `process.argv`; argv[0] and argv[1] are skipped).
+///
+/// All output is written to stdout/stderr and the process exits when done.
+#[napi]
+pub fn cli(argv: Vec<String>) {
+    let args: Vec<String> = argv.into_iter().skip(2).collect();
+    typack::cli::run_cli(&args);
+}

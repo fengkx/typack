@@ -1,6 +1,6 @@
 {
   "name": "typack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A native TypeScript declaration (.d.ts) bundler built on Oxc",
   "keywords": [
     "bundler",
@@ -16,14 +16,21 @@
     "url": "https://github.com/Dunqing/typack",
     "directory": "napi"
   },
+  "bin": {
+    "typack": "./cli.js"
+  },
   "files": [
     "index.js",
     "index.d.ts",
+    "cli.js",
     "*.node"
   ],
   "type": "commonjs",
   "main": "index.js",
   "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "pnpm run build-napi-release",
     "build-napi": "napi build --platform --js index.js --dts index.d.ts --output-dir . --no-dts-cache",

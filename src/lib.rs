@@ -11,6 +11,9 @@ mod options;
 mod scan_stage;
 mod types;
 
+#[cfg(feature = "cli")]
+pub mod cli;
+
 pub use options::TypackOptions;
 
 use oxc_allocator::Allocator;

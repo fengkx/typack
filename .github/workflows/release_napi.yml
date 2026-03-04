@@ -73,12 +73,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      id-token: write
+      contents: write
     env:
       PACKAGE_PATH: napi/package.json
       NPM_DIR: napi/npm-release
-      PUBLISH_FLAGS: "--provenance --access public --no-git-checks"
+      PUBLISH_FLAGS: "--access public --no-git-checks"
     steps:
       - uses: actions/checkout@v4
 
@@ -122,3 +121,9 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
