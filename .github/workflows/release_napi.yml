@@ -74,10 +74,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     env:
       PACKAGE_PATH: napi/package.json
       NPM_DIR: napi/npm-release
-      PUBLISH_FLAGS: "--access public --no-git-checks"
+      PUBLISH_FLAGS: "--provenance --access public --no-git-checks"
     steps:
       - uses: actions/checkout@v4
 
@@ -108,9 +109,6 @@ jobs:
       - name: Publish platform packages
         working-directory: napi
         run: pnpm exec napi pre-publish --no-gh-release -t npm --package-json-path package.json --npm-dir npm-release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Upgrade npm
         run: npm install -g npm@latest
@@ -118,9 +116,6 @@ jobs:
       - name: Publish main package
         working-directory: napi
         run: pnpm publish . ${PUBLISH_FLAGS}
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
