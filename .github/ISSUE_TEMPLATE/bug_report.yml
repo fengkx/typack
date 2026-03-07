@@ -1,0 +1,50 @@
+name: Bug Report
+description: Report a bug in Typack
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the sections below.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Input Code
+      description: The TypeScript declaration input that triggers the bug.
+      render: typescript
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Actual Output
+      description: What Typack currently produces.
+      render: typescript
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Output
+      description: What you expected Typack to produce.
+      render: typescript
+
+  - type: input
+    id: repl-link
+    attributes:
+      label: REPL Link
+      description: A link to the Typack REPL reproducing the issue.
+      placeholder: https://typack.dunqing.dev/#...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context about the problem.
