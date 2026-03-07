@@ -8,7 +8,7 @@ const props = defineProps<{
   diagnostics: Array<{ message: string; severity: string }>;
 }>();
 
-const activeTab = ref<"output" | "diagnostics" | "sourcemap">("output");
+const activeTab = ref<"output" | "diagnostics">("output");
 const editorContainer = ref<HTMLDivElement>();
 let editor: any = null;
 
@@ -43,11 +43,12 @@ watch(
 
 function utf8ToBase64(input: string): string {
   const bytes = new TextEncoder().encode(input);
-  let binary = "";
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
+  const chunks: string[] = [];
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    const slice = bytes.subarray(i, i + 0x8000);
+    chunks.push(String.fromCharCode.apply(null, slice as unknown as number[]));
   }
-  return btoa(binary);
+  return btoa(chunks.join(""));
 }
 
 function openSourceMapViz() {

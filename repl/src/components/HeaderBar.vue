@@ -22,7 +22,7 @@ function reportBug() {
     "repl-link": replLink,
   });
 
-  window.open(`https://github.com/Dunqing/typack/issues/new?${params.toString()}`, "_blank");
+  window.open(`https://github.com/Dunqing/typack/issues/new?${params.toString()}`, "_blank", "noopener,noreferrer");
 }
 </script>
 
@@ -37,7 +37,7 @@ function reportBug() {
       >
     </div>
     <div class="header-right">
-      <button class="report-bug" @click="reportBug" title="Report Bug">
+      <button type="button" class="report-bug" @click="reportBug" title="Report Bug">
         <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
           <path
             d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.49 3.49 0 0 1 2.441 0l.999-1a.75.75 0 1 1

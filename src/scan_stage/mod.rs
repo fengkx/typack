@@ -362,7 +362,17 @@ impl<'a, 'opt> ScanStage<'a, 'opt> {
         // existence directly for platforms that don't support it (e.g. WASI).
         match entry_path.canonicalize() {
             Ok(p) => Ok(p),
-            Err(_) if entry_path.exists() => Ok(entry_path),
+            Err(_) if entry_path.exists() => {
+                // Normalize to an absolute path so deduplication works correctly.
+                if entry_path.is_absolute() {
+                    Ok(entry_path)
+                } else {
+                    match std::env::current_dir() {
+                        Ok(cwd) => Ok(cwd.join(&entry_path)),
+                        Err(_) => Ok(entry_path),
+                    }
+                }
+            }
             Err(e) => Err(vec![OxcDiagnostic::error(format!(
                 "Cannot resolve entry point {}: {e}",
                 entry_path.display()

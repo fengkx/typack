@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import loader from "@monaco-editor/loader";
-import { ref, watch, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount, nextTick, computed } from "vue";
 
 import type { FileEntry } from "../composables/useFiles";
 
@@ -121,12 +121,45 @@ onMounted(async () => {
 onBeforeUnmount(() => {
   linkProviderDisposable?.dispose();
   editor?.dispose();
+  // Dispose all file models
+  if (monaco) {
+    for (const model of monaco.editor.getModels()) {
+      model.dispose();
+    }
+  }
 });
 
 function currentContent(): string {
   const f = props.files.find((f) => f.name === props.activeFile);
   return f?.content ?? "";
 }
+
+const fileNames = computed(() => props.files.map((f) => f.name));
+
+// Keep Monaco models in sync with files (add/remove/rename)
+watch(fileNames, (newNames, oldNames) => {
+  if (!monaco) return;
+  const newSet = new Set(newNames);
+  const oldSet = new Set(oldNames ?? []);
+
+  // Dispose models for removed files
+  for (const name of oldSet) {
+    if (!newSet.has(name)) {
+      const uri = monaco.Uri.parse(`file:///${name}`);
+      monaco.editor.getModel(uri)?.dispose();
+    }
+  }
+
+  // Create models for new files
+  for (const file of props.files) {
+    if (!oldSet.has(file.name)) {
+      const uri = monaco.Uri.parse(`file:///${file.name}`);
+      if (!monaco.editor.getModel(uri)) {
+        monaco.editor.createModel(file.content, "typescript", uri);
+      }
+    }
+  }
+});
 
 watch(
   () => props.activeFile,

@@ -34,13 +34,18 @@ export function useTypack() {
     try {
       // TextDecoder.decode() rejects SharedArrayBuffer-backed views;
       // patch it to copy before decoding so the WASM runtime works.
-      const origDecode = TextDecoder.prototype.decode;
-      TextDecoder.prototype.decode = function (input?: BufferSource, options?: TextDecodeOptions) {
-        if (input && (input as any).buffer instanceof SharedArrayBuffer) {
-          input = new Uint8Array(input as ArrayBufferView as Uint8Array);
-        }
-        return origDecode.call(this, input, options);
-      };
+      // Guard against re-patching (e.g. HMR).
+      if (!(TextDecoder.prototype as any).__typack_patched) {
+        const origDecode = TextDecoder.prototype.decode;
+        TextDecoder.prototype.decode = function (input?: BufferSource, options?: TextDecodeOptions) {
+          if (input && (input as any).buffer instanceof SharedArrayBuffer) {
+            const view = input as ArrayBufferView;
+            input = new Uint8Array(new Uint8Array(view.buffer, view.byteOffset, view.byteLength));
+          }
+          return origDecode.call(this, input, options);
+        };
+        (TextDecoder.prototype as any).__typack_patched = true;
+      }
 
       const { Volume, createFsFromVolume } = await import("@napi-rs/wasm-runtime/fs");
       const { instantiateNapiModuleSync, getDefaultContext, WASI } =
@@ -64,7 +69,7 @@ export function useTypack() {
       const wasmFile = await fetch(wasmUrl).then((r) => r.arrayBuffer());
 
       const sharedMemory = new WebAssembly.Memory({
-        initial: 4000,
+        initial: 1024,
         maximum: 65536,
         shared: true,
       });
